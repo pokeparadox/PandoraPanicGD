@@ -1,0 +1,41 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Title/PandoraPanic_Title.ogg" type="AudioStream" id=1]
+[ext_resource path="res://Title/LogoLarge/LogoLarge.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Title/Background/Background.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Title/PressStart/PressStart.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Title/StarSpread/StarSpread.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Title/Title.gd" type="Script" id=6]
+[ext_resource path="res://Title/MainMenu/MainMenu.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Title/MainMenu/pp_logo_small.png" type="Texture" id=8]
+
+[node name="Title" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="Background" parent="." instance=ExtResource( 3 )]
+
+[node name="StarSpread" parent="." instance=ExtResource( 5 )]
+position = Vector2( 400, 240 )
+emitting = false
+
+[node name="LogoLarge" parent="." instance=ExtResource( 2 )]
+position = Vector2( 400, 240 )
+
+[node name="PressStart" parent="." instance=ExtResource( 4 )]
+position = Vector2( 400, 400 )
+
+[node name="PandoraPanicTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
+
+[node name="SmallLogo" type="Sprite" parent="."]
+position = Vector2( 400, 56 )
+texture = ExtResource( 8 )
+
+[node name="MainMenu" parent="." instance=ExtResource( 7 )]
+margin_left = 189.0
+margin_top = 104.0
+margin_right = 614.0
+margin_bottom = 471.0
+
+[connection signal="MenuOptionSelected" from="MainMenu" to="." method="_on_MainMenu_MenuOptionSelected"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/PandoraPanic_Title.ogg-83f20f191ec64cfb025ee4c63f819d92.oggstr"
+
+[deps]
+
+source_file="res://Title/PandoraPanic_Title.ogg"
+dest_files=[ "res://.import/PandoraPanic_Title.ogg-83f20f191ec64cfb025ee4c63f819d92.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

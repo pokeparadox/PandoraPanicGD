@@ -1,0 +1,100 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Title/MainMenu/pp_menu.png" type="Texture" id=1]
+[ext_resource path="res://Title/MainMenu/pp_menu_selected.png" type="Texture" id=2]
+[ext_resource path="res://Title/MainMenu/MainMenu.gd" type="Script" id=3]
+[ext_resource path="res://Controls/TextureTextButton.tscn" type="PackedScene" id=4]
+
+[node name="MainMenu" type="VBoxContainer"]
+margin_right = 800.0
+margin_bottom = 480.0
+alignment = 1
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PandoraPanic" parent="." instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 56.0
+margin_right = 800.0
+margin_bottom = 105.0
+texture_normal = ExtResource( 1 )
+texture_hover = ExtResource( 2 )
+LabelText = "PandoraPanic!"
+LabelOffset = Vector2( 112, 8 )
+
+[node name="Pandordered" parent="." instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 109.0
+margin_right = 800.0
+margin_bottom = 158.0
+texture_normal = ExtResource( 1 )
+texture_hover = ExtResource( 2 )
+LabelText = "Pandordered!"
+LabelOffset = Vector2( 115, 8 )
+
+[node name="SelectionBox" parent="." instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 162.0
+margin_right = 800.0
+margin_bottom = 211.0
+texture_normal = ExtResource( 1 )
+texture_hover = ExtResource( 2 )
+LabelText = "Selection Box!"
+LabelOffset = Vector2( 105, 8 )
+
+[node name="Scores" parent="." instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 215.0
+margin_right = 800.0
+margin_bottom = 264.0
+texture_normal = ExtResource( 1 )
+texture_hover = ExtResource( 2 )
+LabelText = "Scores!"
+LabelOffset = Vector2( 105, 8 )
+
+[node name="Achievements" parent="." instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 268.0
+margin_right = 800.0
+margin_bottom = 317.0
+texture_normal = ExtResource( 1 )
+texture_hover = ExtResource( 2 )
+LabelText = "Achievements!"
+LabelOffset = Vector2( 105, 8 )
+
+[node name="Credits" parent="." instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 321.0
+margin_right = 800.0
+margin_bottom = 370.0
+texture_normal = ExtResource( 1 )
+texture_hover = ExtResource( 2 )
+LabelText = "Credits!"
+LabelOffset = Vector2( 105, 8 )
+
+[node name="Quit" parent="." instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 374.0
+margin_right = 800.0
+margin_bottom = 423.0
+texture_normal = ExtResource( 1 )
+texture_hover = ExtResource( 2 )
+LabelText = "Quit!"
+LabelOffset = Vector2( 105, 8 )
+
+[connection signal="pressed" from="PandoraPanic" to="." method="_on_PandoraPanic_pressed"]
+[connection signal="pressed" from="Pandordered" to="." method="_on_Pandordered_pressed"]
+[connection signal="pressed" from="SelectionBox" to="." method="_on_SelectionBox_pressed"]
+[connection signal="pressed" from="Scores" to="." method="_on_Scores_pressed"]
+[connection signal="pressed" from="Achievements" to="." method="_on_Achievements_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_Credits_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]

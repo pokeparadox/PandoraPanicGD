@@ -1,0 +1,46 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+[application]
+
+config/name="PandoraPanic"
+run/main_scene="res://Title/Title.tscn"
+config/icon="res://icon.png"
+name="PandoraPanic"
+main_scene="res://Title/Title.scn"
+main_loop_type=""
+icon="res://icon.png"
+
+[autoload]
+
+Global="*res://Global.gd"
+Random="*res://Utils/Random.gd"
+SceneManager="*res://Utils/SceneManager.gd"
+Resolution="*res://Utils/Resolution.gd"
+
+[display]
+
+window/size/width=800
+window/size/height=480
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+width=800
+height=480
+
+[render]
+
+thread_model=2
+mipmap_policy=2
+default_clear_color=Color( 0, 0, 0, 1 )
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+environment/default_environment="res://default_env.tres"

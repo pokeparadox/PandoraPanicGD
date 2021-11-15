@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Title/Background/Background.gd" type="Script" id=1]
+[ext_resource path="res://Title/Background/pp_bg.png" type="Texture" id=2]
+
+[node name="Background" type="Sprite"]
+texture = ExtResource( 2 )
+centered = false
+script = ExtResource( 1 )
