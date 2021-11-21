@@ -38,4 +38,5 @@ margin_top = 104.0
 margin_right = 614.0
 margin_bottom = 471.0
 
+[connection signal="finished" from="PandoraPanicTheme" to="." method="_on_PandoraPanicTheme_finished"]
 [connection signal="MenuOptionSelected" from="MainMenu" to="." method="_on_MainMenu_MenuOptionSelected"]

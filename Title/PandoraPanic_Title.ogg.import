@@ -11,5 +11,5 @@ dest_files=[ "res://.import/PandoraPanic_Title.ogg-83f20f191ec64cfb025ee4c63f819
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
