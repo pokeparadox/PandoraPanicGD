@@ -22,13 +22,13 @@ func _physics_process(delta):
 	var angle = abs(rotation_degrees)
 
 	if angle < MaxRotation:
-		lastAngle = rotation_degrees
+		lastAngle = global_rotation_degrees
 		if Input.is_action_pressed("ui_left"):
 			rotate(-Rotation)
 		elif Input.is_action_pressed("ui_right"):
 			rotate(Rotation)
 	else:
-		rotation_degrees = lastAngle
+		global_rotation_degrees = lastAngle
 
 # Visual Updates
 func _process(delta):
@@ -51,8 +51,8 @@ func ActivateThrusters():
 	emit_signal("FuelLevelChanged", fuel)
 	if currentThrust < MaxThrust:
 		currentThrust = currentThrust+Acceleration
-	var rot = rotation_degrees
-	var vel = Vector2(-currentThrust * sin(rot), -currentThrust * cos(rot))
+	var rot = global_rotation
+	var vel = Vector2(currentThrust * sin(rot), -currentThrust * cos(rot))
 	var prevVel = self.get_linear_velocity()
 	self.set_linear_velocity(vel + prevVel)
 
