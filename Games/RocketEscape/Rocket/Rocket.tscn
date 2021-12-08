@@ -5,6 +5,7 @@
 [ext_resource path="res://Games/RocketEscape/Rocket/hit.ogg" type="AudioStream" id=3]
 
 [node name="Rocket" type="RigidBody2D"]
+collision_mask = 18
 contacts_reported = 4
 contact_monitor = true
 script = ExtResource( 1 )
@@ -23,3 +24,7 @@ emitting = false
 
 [node name="StreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+
+[connection signal="body_entered" from="." to="." method="_on_Rocket_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_Rocket_body_exited"]
+[connection signal="finished" from="StreamPlayer" to="." method="_on_StreamPlayer_finished"]

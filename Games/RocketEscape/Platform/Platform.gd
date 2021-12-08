@@ -1,5 +1,7 @@
 extends Node2D
 
+signal PlatformHit(hit)
+
 var middleSegs = []
 
 func _ready():

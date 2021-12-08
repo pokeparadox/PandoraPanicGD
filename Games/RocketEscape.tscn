@@ -36,3 +36,5 @@ contacts_reported = 2
 [node name="Platform" parent="." instance=ExtResource( 7 )]
 
 [node name="FuelBar" parent="." instance=ExtResource( 8 )]
+
+[connection signal="GroundHit" from="Ground" to="Rocket" method="_on_Ground_GroundHit"]

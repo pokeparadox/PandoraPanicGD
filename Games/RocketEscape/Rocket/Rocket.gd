@@ -7,12 +7,14 @@ const Rotation = 0.01
 const MaxRotation = 45
 const fuelUsageRate = 0.1
 
+var padLanding : bool = false
+var groundLanding : bool = false
+
 var lastAngle = 0
 var currentThrust = 1
-var firstTouch = false
+var firstTouch = true
 var fuel = 100
 
-# Physics Updates
 func _physics_process(delta):
 	if Input.is_action_pressed("ui_up") || Input.is_action_pressed("ui_accept"):
 		ActivateThrusters()
@@ -30,19 +32,10 @@ func _physics_process(delta):
 	else:
 		global_rotation_degrees = lastAngle
 
-# Visual Updates
-func _process(delta):
-	var hit = get_node("StreamPlayer")
-	var colliding = !get_colliding_bodies().empty()
-	if firstTouch && colliding && !hit.is_playing():
-		hit.play()
-		firstTouch = false
-	elif !colliding:
-		firstTouch= true
-
 func ActivateThrusters():
 	if fuel > 0:
 		fuel = fuel - fuelUsageRate
+		firstTouch = false
 	else:
 		DisableThrusters()
 		return
@@ -63,3 +56,21 @@ func DisableThrusters():
 func SetThrusters(val):
 	for i in get_tree().get_nodes_in_group("Thrusters"):
 		i.set_emitting(val)
+
+
+func _on_Rocket_body_entered(body: Node) -> void:
+	if not firstTouch:
+		firstTouch = true
+	if firstTouch:
+		var hit = $StreamPlayer
+		if not hit.playing:
+			hit.play()
+
+
+func _on_StreamPlayer_finished() -> void:
+	if fuel <= 0:
+		if groundLanding:
+			Score.GameLose()
+
+func _on_Ground_GroundHit(hit: bool):
+	groundLanding = hit
