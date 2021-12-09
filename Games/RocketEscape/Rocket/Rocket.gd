@@ -71,6 +71,15 @@ func _on_StreamPlayer_finished() -> void:
 	if fuel <= 0:
 		if groundLanding:
 			Score.GameLose()
+		elif padLanding:
+			#close cal;
+			pass
+	if padLanding and firstTouch:
+		Score.GameWin()
 
 func _on_Ground_GroundHit(hit: bool):
 	groundLanding = hit
+
+
+func _on_Platform_PlatformHit(hit) -> void:
+	padLanding = hit

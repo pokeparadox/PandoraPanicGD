@@ -22,7 +22,6 @@ tracks/0/keys = {
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 hframes = 2
-frame = 1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( 12.0556, 11.102, 12.0556, -3.02903, -2.70341, -3.02903, -2.91276, -5.12251, -10.9727, -5.12251, -10.9727, -1.87762, -9.1932, -1.04023, -9.1932, 5.76358, -11.81, 9.53185, -10.554, 11.102 )

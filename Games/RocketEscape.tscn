@@ -28,13 +28,15 @@ NumStars = 15
 position = Vector2( 400, 421 )
 
 [node name="Rocket" parent="." instance=ExtResource( 6 )]
-position = Vector2( 45, 343 )
+position = Vector2( 118, 38 )
 physics_material_override = SubResource( 1 )
 gravity_scale = 0.6
 contacts_reported = 2
 
 [node name="Platform" parent="." instance=ExtResource( 7 )]
+position = Vector2( 619, 365 )
 
 [node name="FuelBar" parent="." instance=ExtResource( 8 )]
 
 [connection signal="GroundHit" from="Ground" to="Rocket" method="_on_Ground_GroundHit"]
+[connection signal="PlatformHit" from="Platform" to="Rocket" method="_on_Platform_PlatformHit"]
