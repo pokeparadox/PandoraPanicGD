@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Games/RocketEscape/Rocket/Rocket.gd" type="Script" id=1]
 [ext_resource path="res://Games/RocketEscape/Rocket/rocket.png" type="Texture" id=2]
 [ext_resource path="res://Games/RocketEscape/Rocket/hit.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Games/RocketEscape/Rocket/RocketHealthFull.tres" type="Gradient" id=4]
 
 [node name="Rocket" type="RigidBody2D"]
 collision_mask = 18
@@ -17,10 +18,26 @@ polygon = PoolVector2Array( 0.159233, -32.3676, 4.15923, -29.6176, 7.65923, -25.
 texture = ExtResource( 2 )
 
 [node name="ThrusterParticle01" type="CPUParticles2D" parent="." groups=["Thrusters"]]
+position = Vector2( -10, 34 )
 emitting = false
+amount = 80
+randomness = 0.2
+lifetime_randomness = 0.16
+direction = Vector2( 0, 1 )
+spread = 14.03
+initial_velocity = 32.26
+color_ramp = ExtResource( 4 )
 
 [node name="ThrusterParticle02" type="CPUParticles2D" parent="." groups=["Thrusters"]]
+position = Vector2( 9, 34 )
 emitting = false
+amount = 80
+randomness = 0.2
+lifetime_randomness = 0.16
+direction = Vector2( 0, 1 )
+spread = 14.03
+initial_velocity = 32.26
+color_ramp = ExtResource( 4 )
 
 [node name="StreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
