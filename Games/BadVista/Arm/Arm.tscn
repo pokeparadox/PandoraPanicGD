@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Games/BadVista/Arm/Arm.gd" type="Script" id=1]
+[ext_resource path="res://Games/BadVista/Arm/bvArm.png" type="Texture" id=2]
+[ext_resource path="res://Games/BadVista/Logo/WinLogo.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("WinLogo:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=1]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 55.0, 25.0, 0.0, 55.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:power")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 100.0 ]
+}
+
+[node name="Arm" type="Node2D"]
+script = ExtResource( 1 )
+power = 48.5564
+
+[node name="ArmSprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Player" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
+anims/Throw = SubResource( 1 )
+
+[node name="WinLogo" parent="." instance=ExtResource( 3 )]
+position = Vector2( -73, 25 )

@@ -1,0 +1,134 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Games/BadVista/bvBkgnd.png" type="Texture" id=1]
+[ext_resource path="res://Games/BadVista/BadVista.gd" type="Script" id=2]
+[ext_resource path="res://Games/BadVista/pp.bv.windows.single.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Games/BadVista/Arm/Arm.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 240 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 400, 10 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 80, 45 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 4.139, 29.9635 )
+
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 15.5696, 3.83113 )
+
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 4.13901, 27.1076 )
+
+[sub_resource type="RectangleShape2D" id=26]
+extents = Vector2( 41.3717, 10 )
+
+[sub_resource type="RectangleShape2D" id=27]
+extents = Vector2( 26.2982, 112.344 )
+
+[sub_resource type="RectangleShape2D" id=28]
+extents = Vector2( 51.923, 24.9179 )
+
+[node name="BadVista" type="Sprite"]
+texture = ExtResource( 1 )
+centered = false
+script = ExtResource( 2 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+position = Vector2( 10, 240 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+shape = SubResource( 1 )
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+position = Vector2( 791, 240 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+shape = SubResource( 1 )
+
+[node name="TopWall" type="StaticBody2D" parent="."]
+position = Vector2( 400, 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
+shape = SubResource( 2 )
+
+[node name="BottomWall" type="StaticBody2D" parent="."]
+position = Vector2( 400, 470 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall"]
+shape = SubResource( 2 )
+
+[node name="Bad" type="StaticBody2D" parent="."]
+position = Vector2( 88, 57 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bad"]
+shape = SubResource( 3 )
+
+[node name="V" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="V"]
+polygon = PoolVector2Array( 30.7756, 117.489, 46.4017, 176.929, 51.6339, 176.929, 67.3305, 117.472, 59.2444, 117.472, 49.7313, 159.805, 40.2887, 117.014 )
+
+[node name="I" type="StaticBody2D" parent="."]
+position = Vector2( 89, 147 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="I"]
+shape = SubResource( 6 )
+
+[node name="S" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="S"]
+polygon = PoolVector2Array( 136.371, 129.38, 142.079, 125.1, 137.322, 118.916, 131.139, 116.538, 122.577, 116.538, 117.345, 118.916, 113.064, 127.002, 112.588, 134.613, 115.918, 140.796, 119.247, 146.028, 133.517, 156.493, 134.468, 161.725, 132.09, 167.908, 126.858, 169.335, 121.15, 166.957, 117.345, 163.628, 111.637, 167.433, 114.015, 172.665, 118.772, 175.519, 124.004, 177.422, 131.614, 177.422, 137.322, 174.092, 141.603, 167.908, 143.506, 162.201, 142.554, 154.59, 140.176, 150.785, 127.809, 141.272, 122.577, 136.04, 121.15, 129.856, 124.479, 124.148, 131.614, 124.624 )
+
+[node name="T" type="StaticBody2D" parent="."]
+position = Vector2( 172, 149 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="T"]
+position = Vector2( 0, -28 )
+shape = SubResource( 18 )
+
+[node name="CollisionShape2D 2" type="CollisionShape2D" parent="T"]
+shape = SubResource( 19 )
+
+[node name="A" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="A"]
+polygon = PoolVector2Array( 210.573, 117.491, 218.659, 117.016, 233.88, 176.948, 224.842, 176.948, 220.561, 160.776, 207.719, 160.776, 204.389, 176.948, 195.352, 176.948 )
+
+[node name="Bin" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bin"]
+polygon = PoolVector2Array( 152.543, 374.868, 146.359, 375.819, 158.251, 449.07, 244.82, 449.07, 260.516, 376.295, 253.857, 374.868, 240.063, 441.935, 164.434, 441.46 )
+
+[node name="Arm" parent="." instance=ExtResource( 4 )]
+position = Vector2( 700, 272 )
+
+[node name="WinArea" type="Area2D" parent="."]
+position = Vector2( 201, 434 )
+monitorable = false
+
+[node name="BucketBase" type="CollisionShape2D" parent="WinArea"]
+shape = SubResource( 26 )
+
+[node name="ResetArea" type="Area2D" parent="."]
+position = Vector2( 246, 0 )
+monitoring = false
+monitorable = false
+
+[node name="Body" type="CollisionShape2D" parent="ResetArea"]
+position = Vector2( 478, 336 )
+shape = SubResource( 27 )
+
+[node name="Arm" type="CollisionShape2D" parent="ResetArea"]
+position = Vector2( 465, 297 )
+shape = SubResource( 28 )
+
+[connection signal="body_entered" from="WinArea" to="." method="_on_WinArea_body_entered"]
+[connection signal="body_entered" from="ResetArea" to="." method="_on_ResetArea_body_entered"]

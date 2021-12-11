@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Games/BadVista/Logo/WinLogo.gd" type="Script" id=1]
+[ext_resource path="res://Games/BadVista/Logo/bvLogo.png" type="Texture" id=2]
+[ext_resource path="res://Games/BadVista/Logo/ding.ogg" type="AudioStream" id=3]
+
+[sub_resource type="PhysicsMaterial" id=1]
+friction = 0.1
+bounce = 0.85
+
+[node name="WinLogo" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="KinematicBody2D" type="RigidBody2D" parent="."]
+mode = 3
+mass = 0.2
+physics_material_override = SubResource( 1 )
+continuous_cd = 2
+contacts_reported = 2
+contact_monitor = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KinematicBody2D"]
+polygon = PoolVector2Array( -27.7203, -8.15999, -12.6854, 31.0007, -10.5875, 31.3504, -7.7903, 29.9518, -2.54556, 23.6581, 4.09777, 20.8609, 12.4894, 20.1616, 19.832, 17.0148, 26.825, 8.62318, 12.839, -30.5375, 8.64321, -31.2368, 5.49637, -26.6914, -0.797318, -20.7474, -15.8322, -18.9991, -21.077, -16.2019 )
+
+[node name="Sprite" type="Sprite" parent="KinematicBody2D/CollisionPolygon2D"]
+texture = ExtResource( 2 )
+
+[node name="Ding" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )

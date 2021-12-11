@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/chimes.ogg-5f1874dc6b87722583fe8c942f403731.oggstr"
+
+[deps]
+
+source_file="res://Games/BadVista/chimes.ogg"
+dest_files=[ "res://.import/chimes.ogg-5f1874dc6b87722583fe8c942f403731.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ding.ogg-0efcc310e16b70994a48e190375e8669.oggstr"
+
+[deps]
+
+source_file="res://Games/BadVista/Logo/ding.ogg"
+dest_files=[ "res://.import/ding.ogg-0efcc310e16b70994a48e190375e8669.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

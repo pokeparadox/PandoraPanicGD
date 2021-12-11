@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/pp.bv.windows.e.egg.ogg-dea176dde070e62cc868e1b0b77ccd0a.oggstr"
+
+[deps]
+
+source_file="res://Games/BadVista/pp.bv.windows.e.egg.ogg"
+dest_files=[ "res://.import/pp.bv.windows.e.egg.ogg-dea176dde070e62cc868e1b0b77ccd0a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
