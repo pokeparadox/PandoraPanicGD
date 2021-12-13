@@ -1,4 +1,6 @@
 # PandoraPanicGD
+![pp_logo_large](https://user-images.githubusercontent.com/816975/145898073-165478db-8733-4518-8494-038c0b497a07.png)
+
 PandoraPanic! Recreated and improved upon using Godot. PandoraPanic! was created originally for the OpenPandora handheld by members of the OpenPandora community.
 This is the same game ported to Godot.
 
@@ -16,6 +18,10 @@ This is the same game ported to Godot.
 - Scoring and next mini game selection is handled by the framework.
 - Ensure that your mini game has a comment with it's name and description and a comment for who the author is to be correctly credited. (I want to formalise this in the code but for now, this is enough.)
 - Push your changes onto the repo or send me a zip of your mini game.
+
+*Example of mini-games folder layout:*
+![image](https://user-images.githubusercontent.com/816975/145898348-2cc9354f-75f9-422c-88bb-b8a1dcf8a768.png)
+
 
 ## Available API Calls
 - **Score.GameWin()** - Called when the player wins the minigame.
