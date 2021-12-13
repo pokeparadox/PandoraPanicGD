@@ -1,5 +1,4 @@
-extends Node2D
-
+extends MiniGame
 
 func _on_WinArea_body_entered(body: Node) -> void:
 	# Check velocity is lowering and then set win condition

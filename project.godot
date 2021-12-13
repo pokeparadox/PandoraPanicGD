@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "MiniGame",
+"language": "GDScript",
+"path": "res://Utils/MiniGame.gd"
+} ]
+_global_script_class_icons={
+"MiniGame": ""
+}
+
 [application]
 
 config/name="PandoraPanic"

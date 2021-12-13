@@ -1,4 +1,4 @@
-extends Node2D
+extends MiniGame
 
 func _ready():
 	# Setup connection of fuel bar and rocket

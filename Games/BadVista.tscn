@@ -36,6 +36,9 @@ extents = Vector2( 51.923, 24.9179 )
 texture = ExtResource( 1 )
 centered = false
 script = ExtResource( 2 )
+GameName = "BadVista"
+GameDescription = "Throw Vista in the bin!"
+GameAuthor = "Todd"
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
