@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "CreditItem",
+"language": "GDScript",
+"path": "res://DataModels/CreditItem.gd"
+}, {
 "base": "Node2D",
 "class": "MiniGame",
 "language": "GDScript",
 "path": "res://Utils/MiniGame.gd"
 } ]
 _global_script_class_icons={
+"CreditItem": "",
 "MiniGame": ""
 }
 

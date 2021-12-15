@@ -1,8 +1,13 @@
 extends MiniGame
 
-# Called when the node enters the scene tree for the first time.
+# Some setup
 func _ready() -> void:
-	pass
+	._ready()
+	self.Description = "An example game where you can choose to win or lose"
+
+# Make sure everyone is properly creditted - then intention that this will feed into the credits screen.
+func setupCredits() -> void:
+	addCredit(CreditItem.CreditType.Game, "PokeParadox", "ExampleGameB")
 
 
 func _on_ButtonWin_pressed() -> void:
