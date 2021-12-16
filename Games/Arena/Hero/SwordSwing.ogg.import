@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SwordSwing.ogg-c8afdb78c8d3ba43d4a65f6a9e8cbda2.oggstr"
+
+[deps]
+
+source_file="res://Games/Arena/Hero/SwordSwing.ogg"
+dest_files=[ "res://.import/SwordSwing.ogg-c8afdb78c8d3ba43d4a65f6a9e8cbda2.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

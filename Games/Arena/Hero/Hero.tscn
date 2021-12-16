@@ -1,0 +1,410 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://Games/Arena/Hero/Hero.gd" type="Script" id=1]
+[ext_resource path="res://Games/Arena/Hero/HeroStandingDown.png" type="Texture" id=3]
+[ext_resource path="res://Games/Arena/Hero/HeroStandingLeft.png" type="Texture" id=4]
+[ext_resource path="res://Games/Arena/Hero/HeroStandingRight.png" type="Texture" id=5]
+[ext_resource path="res://Games/Arena/Hero/HeroStandingUp.png" type="Texture" id=6]
+[ext_resource path="res://Games/Arena/Hero/HeroHit.png" type="Texture" id=7]
+[ext_resource path="res://Games/Arena/Hero/HeroDead.png" type="Texture" id=8]
+[ext_resource path="res://Games/Arena/Hero/HeroWalkingDown.png" type="Texture" id=9]
+[ext_resource path="res://Games/Arena/Hero/HeroWalkingLeft.png" type="Texture" id=10]
+[ext_resource path="res://Games/Arena/Hero/HeroWalkingRight.png" type="Texture" id=11]
+[ext_resource path="res://Games/Arena/Hero/HeroWalkingUp.png" type="Texture" id=12]
+[ext_resource path="res://Games/Arena/Hero/HeroSwordDown.png" type="Texture" id=13]
+[ext_resource path="res://Games/Arena/Hero/HeroSwordLeft.png" type="Texture" id=14]
+[ext_resource path="res://Games/Arena/Hero/HeroSwordRight.png" type="Texture" id=15]
+[ext_resource path="res://Games/Arena/Hero/HeroSwordUp.png" type="Texture" id=16]
+[ext_resource path="res://Games/Arena/Hero/HeroShadow.png" type="Texture" id=17]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 23.0
+
+[sub_resource type="SpriteFrames" id=11]
+animations = [ {
+"frames": [ null, null, null, null, null, null, null, null, null, null ],
+"loop": false,
+"name": "Death",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 24, 6 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 20, 6 )
+
+[sub_resource type="CircleShape2D" id=13]
+radius = 23.0
+
+[sub_resource type="Animation" id=14]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D/Attack/SwordDown:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 2,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AttackSound:stream/play")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ true ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "EndAttack"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CollisionShape2D/Attack/SwordDown/SwordCollision:shape:extents")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ Vector2( 20, 6 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionShape2D/Attack/SwordDown/SwordCollision:transform/pos")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 2,
+"values": [ Vector2( -50, 18 ), Vector2( -25, 77 ), Vector2( 31, 85 ), Vector2( 71, 39 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CollisionShape2D/Attack/SwordDown/SwordCollision:shape")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 2,
+"values": [ SubResource( 12 ), SubResource( 13 ), SubResource( 8 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("CollisionShape2D/Attack/SwordDown/SwordCollision:shape:radius")
+tracks/6/interp = 0
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ 23.0 ]
+}
+
+[sub_resource type="Animation" id=15]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("AttackSound:stream/play")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ true ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "EndAttack"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D/Attack/SwordLeft:frame")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 2,
+"values": [ 0, 0, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=16]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("AttackSound:stream/play")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ true ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "EndAttack"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D/Attack/SwordRight:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 0, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=17]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("AttackSound:stream/play")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ true ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "EndAttack"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D/Attack/SwordUp:frame")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 0, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=18]
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D/Animated/WalkingDown:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=19]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D/Animated/WalkingLeft:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 0, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=20]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D/Animated/WalkingRight:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 0, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=21]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D/Animated/WalkingUp:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 0, 2, 3 ]
+}
+
+[node name="Hero" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="Static" type="Node2D" parent="CollisionShape2D"]
+
+[node name="StandingDown" type="Sprite" parent="CollisionShape2D/Static"]
+texture = ExtResource( 3 )
+
+[node name="StandingLeft" type="Sprite" parent="CollisionShape2D/Static"]
+texture = ExtResource( 4 )
+
+[node name="StandingRight" type="Sprite" parent="CollisionShape2D/Static"]
+texture = ExtResource( 5 )
+
+[node name="StandingUp" type="Sprite" parent="CollisionShape2D/Static"]
+texture = ExtResource( 6 )
+
+[node name="Hit" type="Sprite" parent="CollisionShape2D/Static"]
+texture = ExtResource( 7 )
+
+[node name="Dead" type="Sprite" parent="CollisionShape2D/Static"]
+visible = false
+texture = ExtResource( 8 )
+
+[node name="Animated" type="Node2D" parent="CollisionShape2D"]
+
+[node name="WalkingDown" type="Sprite" parent="CollisionShape2D/Animated"]
+texture = ExtResource( 9 )
+hframes = 4
+
+[node name="WalkingLeft" type="Sprite" parent="CollisionShape2D/Animated"]
+texture = ExtResource( 10 )
+hframes = 4
+frame = 3
+
+[node name="WalkingRight" type="Sprite" parent="CollisionShape2D/Animated"]
+texture = ExtResource( 11 )
+hframes = 4
+frame = 3
+
+[node name="WalkingUp" type="Sprite" parent="CollisionShape2D/Animated"]
+texture = ExtResource( 12 )
+hframes = 4
+frame = 3
+
+[node name="Attack" type="Node2D" parent="CollisionShape2D"]
+
+[node name="SwordDown" type="Sprite" parent="CollisionShape2D/Attack"]
+texture = ExtResource( 13 )
+hframes = 4
+frame = 3
+
+[node name="SwordCollision" type="CollisionShape2D" parent="CollisionShape2D/Attack/SwordDown"]
+shape = SubResource( 8 )
+
+[node name="SwordLeft" type="Sprite" parent="CollisionShape2D/Attack"]
+texture = ExtResource( 14 )
+hframes = 4
+
+[node name="SwordRight" type="Sprite" parent="CollisionShape2D/Attack"]
+texture = ExtResource( 15 )
+hframes = 4
+frame = 3
+
+[node name="SwordUp" type="Sprite" parent="CollisionShape2D/Attack"]
+texture = ExtResource( 16 )
+hframes = 4
+frame = 3
+
+[node name="Shadow" type="Sprite" parent="CollisionShape2D"]
+texture = ExtResource( 17 )
+
+[node name="Death" type="Node2D" parent="CollisionShape2D"]
+
+[node name="DeathAnim" type="AnimatedSprite" parent="CollisionShape2D/Death"]
+frames = SubResource( 11 )
+animation = "Death"
+
+[node name="CollisionShape2D 2" type="CollisionShape2D" parent="."]
+shape = SubResource( 3 )
+
+[node name="AttackSound" type="Node" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/SwordDown = SubResource( 14 )
+anims/SwordLeft = SubResource( 15 )
+anims/SwordRight = SubResource( 16 )
+anims/SwordUp = SubResource( 17 )
+anims/WalkDown = SubResource( 18 )
+anims/WalkLeft = SubResource( 19 )
+anims/WalkRight = SubResource( 20 )
+anims/WalkUp = SubResource( 21 )

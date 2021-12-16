@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Games/Arena/Background.png" type="Texture" id=1]
+[ext_resource path="res://Games/Arena/Arena.gd" type="Script" id=2]
+[ext_resource path="res://Games/Arena/Hero/Hero.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Games/Arena/Music.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Games/Arena/Monster/Monster.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Games/Arena/Clouds/Clouds.tscn" type="PackedScene" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+[sub_resource type="RectangleShape2D" id=3]
+
+[node name="Arena" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Background" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="LeftWallRegion" type="StaticBody2D" parent="."]
+
+[node name="Left" type="CollisionShape2D" parent="LeftWallRegion"]
+shape = SubResource( 1 )
+
+[node name="BottomWallRegion" type="StaticBody2D" parent="."]
+
+[node name="Bottom" type="CollisionShape2D" parent="BottomWallRegion"]
+shape = SubResource( 2 )
+
+[node name="RightWallRegion" type="StaticBody2D" parent="."]
+
+[node name="Right" type="CollisionShape2D" parent="RightWallRegion"]
+shape = SubResource( 3 )
+
+[node name="CastleRegion" type="StaticBody2D" parent="."]
+
+[node name="Castle" type="CollisionPolygon2D" parent="CastleRegion"]
+polygon = PoolVector2Array( 800, 0, 800, 200, 710, 200, 680, 190, 660, 170, 660, 140, 520, 140, 490, 130, 470, 110, 470, 80, 270, 80, 270, 110, 250, 130, 220, 140, 140, 140, 140, 170, 120, 190, 90, 200, 0, 200, 0, 0 )
+
+[node name="Hero" parent="." instance=ExtResource( 3 )]
+position = Vector2( 380, 378 )
+
+[node name="Monster" parent="." instance=ExtResource( 5 )]
+position = Vector2( 379, 121 )
+
+[node name="ArenaMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
+
+[node name="Clouds" parent="." instance=ExtResource( 7 )]
+self_modulate = Color( 1, 1, 1, 0.25098 )

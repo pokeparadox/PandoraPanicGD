@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Games/Arena/Clouds/Clouds.png" type="Texture" id=2]
+[ext_resource path="res://Games/Arena/Clouds/Clouds.gd" type="Script" id=3]
+
+[node name="Clouds" type="Sprite"]
+texture = ExtResource( 2 )
+script = ExtResource( 3 )

@@ -1,0 +1,132 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Games/Arena/Monster/Monster.gd" type="Script" id=1]
+[ext_resource path="res://Games/Arena/Monster/MonsterStandingDown.png" type="Texture" id=3]
+[ext_resource path="res://Games/Arena/Monster/MonsterStandingLeft.png" type="Texture" id=4]
+[ext_resource path="res://Games/Arena/Monster/MonsterStandingRight.png" type="Texture" id=5]
+[ext_resource path="res://Games/Arena/Monster/MonsterStandingUp.png" type="Texture" id=6]
+[ext_resource path="res://Games/Arena/Monster/MonsterWalkingDown.png" type="Texture" id=7]
+[ext_resource path="res://Games/Arena/Monster/MonsterWalkingLeft.png" type="Texture" id=8]
+[ext_resource path="res://Games/Arena/Monster/MonsterWalkingRight.png" type="Texture" id=9]
+[ext_resource path="res://Games/Arena/Monster/MonsterWalkingUp.png" type="Texture" id=10]
+[ext_resource path="res://Games/Arena/Monster/MonsterShadow.png" type="Texture" id=12]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 16.0
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 24, 6 )
+
+[sub_resource type="Animation" id=6]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Walking/Down:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 0, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Walking/Left:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 0, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Walking/Right:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Walking/Up:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 0, 2, 3 ]
+}
+
+[node name="Monster" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D 2" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="Standing" type="Node2D" parent="."]
+
+[node name="Down" type="Sprite" parent="Standing"]
+texture = ExtResource( 3 )
+
+[node name="Left" type="Sprite" parent="Standing"]
+texture = ExtResource( 4 )
+
+[node name="Right" type="Sprite" parent="Standing"]
+texture = ExtResource( 5 )
+
+[node name="Up" type="Sprite" parent="Standing"]
+texture = ExtResource( 6 )
+
+[node name="Walking" type="Node2D" parent="."]
+
+[node name="Down" type="Sprite" parent="Walking"]
+texture = ExtResource( 7 )
+hframes = 4
+frame = 3
+
+[node name="Left" type="Sprite" parent="Walking"]
+texture = ExtResource( 8 )
+hframes = 4
+frame = 3
+
+[node name="Right" type="Sprite" parent="Walking"]
+texture = ExtResource( 9 )
+hframes = 4
+frame = 3
+
+[node name="Up" type="Sprite" parent="Walking"]
+texture = ExtResource( 10 )
+hframes = 4
+frame = 3
+
+[node name="Shadow" type="Sprite" parent="."]
+texture = ExtResource( 12 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/WalkDown = SubResource( 6 )
+anims/WalkLeft = SubResource( 7 )
+anims/WalkRight = SubResource( 8 )
+anims/WalkUp = SubResource( 9 )
