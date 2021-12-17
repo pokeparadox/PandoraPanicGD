@@ -39,7 +39,7 @@ func LoadRandomGameScene():
 	LoadGameScene(randomScene)
 
 func LoadGameScene(sceneName):
-	SetScene(BuildScenePath(sceneName))
+	SetSceneByPath(BuildScenePath(sceneName))
 
 func LoadNextGameScene():
 	var currentSceneId : int = GetCurrentSceneId()
@@ -49,9 +49,13 @@ func LoadNextGameScene():
 		nextSceneId = 0
 	LoadGameScene(scenes[nextSceneId])
 
-func SetScene(scenePath : String):
-	currentScene.queue_free()
+func SetSceneByPath(scenePath : String):
 	var s = ResourceLoader.load(scenePath)
-	currentScene = s.instance()
-	get_tree().get_root().add_child(currentScene)
+	var scene = s.instance()
+	SetScene(scene)
 	currentScenePath = scenePath
+
+func SetScene(scene : Node):
+	currentScene.queue_free()
+	currentScene = scene
+	get_tree().get_root().add_child(currentScene)

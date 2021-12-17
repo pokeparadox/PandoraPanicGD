@@ -15,20 +15,23 @@ func Load(mode) -> void:
 	Mode = mode
 	Lives = 4
 	CurrentScore = 0
+	if mode == Score.ScoreMode.Ordered:
+		SceneManager.LoadNextGameScene()
+	elif mode == ScoreMode.Panic:
+		SceneManager.LoadRandomGameScene()
 
 func Save(name : String = "") -> void:
 	# Save the hi score with the player's name
 	pass
 
-func LoadNext():
-	if Mode == ScoreMode.Panic:
-		SceneManager.LoadRandomGameScene()
-	elif Mode == ScoreMode.Ordered:
-		SceneManager.LoadNextGameScene()
+func LoadNext(win : bool) -> void:
+	var statusScreen = preload("res://StatusScreen/StatusScreen.tscn").instance()
+	statusScreen.Setup(Mode, win)
+	SceneManager.SetScene(statusScreen)
 
 func GameWin() -> void:
 	CurrentScore += 1
-	LoadNext()
+	LoadNext(true)
 
 func GameOver():
 	# TODO load gameover screen
@@ -40,4 +43,4 @@ func GameLose() -> void:
 		Lives = 0
 		GameOver()
 	else:
-		LoadNext()
+		LoadNext(false)

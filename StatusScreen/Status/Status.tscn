@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://StatusScreen/Status/Status.gd" type="Script" id=1]
+[ext_resource path="res://StatusScreen/Status/pp_win.png" type="Texture" id=2]
+[ext_resource path="res://StatusScreen/Status/pp_fail.png" type="Texture" id=3]
+[ext_resource path="res://StatusScreen/Status/PandoraPanic_Loss.ogg" type="AudioStream" id=4]
+[ext_resource path="res://StatusScreen/Status/PandoraPanic_Win.ogg" type="AudioStream" id=5]
+
+[node name="Status" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Win" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Lose" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 3 )
+
+[node name="WinSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="LoseSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[connection signal="finished" from="WinSound" to="." method="_on_WinSound_finished"]
+[connection signal="finished" from="LoseSound" to="." method="_on_LoseSound_finished"]

@@ -26,14 +26,11 @@ func _input(event: InputEvent) -> void:
 func _on_MainMenu_MenuOptionSelected(option) -> void:
 	match(option):
 		Global.MainMenuOption.PandoraPanic:
-			Score.Mode = Score.ScoreMode.Panic
-			Score.LoadNext()
+			Score.Load(Score.ScoreMode.Panic)
 		Global.MainMenuOption.Pandordered:
-			Score.Mode = Score.ScoreMode.Ordered
-			Score.LoadNext()
+			Score.Load(Score.ScoreMode.Ordered)
 		Global.MainMenuOption.SelectionBox:
-			Score.Mode = Score.ScoreMode.SelectionBox
-			Score.LoadNext()
+			Score.Load(Score.ScoreMode.SelectionBox)
 		Global.MainMenuOption.Scores:
 			# Load Scores Scene
 			pass
