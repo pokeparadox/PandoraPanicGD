@@ -1,11 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Controls/TextureTextButton.gd" type="Script" id=1]
-[ext_resource path="res://Fonts/foo.ttf" type="DynamicFontData" id=2]
-
-[sub_resource type="DynamicFont" id=1]
-size = 28
-font_data = ExtResource( 2 )
+[ext_resource path="res://Fonts/PandoraPanicFont.tres" type="DynamicFont" id=2]
 
 [node name="TextureTextButton" type="TextureButton"]
 anchor_right = 1.0
@@ -21,7 +17,7 @@ margin_top = 8.0
 margin_right = 40.0
 margin_bottom = 41.0
 custom_colors/font_color = Color( 0.917647, 0.956863, 0.203922, 1 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 2 )
 align = 1
 valign = 1
 __meta__ = {

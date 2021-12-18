@@ -5,6 +5,7 @@ var mode = Score.ScoreMode.Panic
 const STATUS_DISPLAY_TIME : int = 2
 
 func _ready() -> void:
+	$Background.ChangeColour = false
 	$LifeBar.LivesCount = Score.Lives
 
 func SetupInit(scoreMode) -> void:
@@ -12,7 +13,10 @@ func SetupInit(scoreMode) -> void:
 	LoadNext()
 
 func Setup(scoreMode, win : bool) -> void:
-	$LifeBar.ChangeLives(Score.Lives)
+	var lives = Score.Lives
+	$StatusBar.SetLives(lives)
+	$LifeBar.ChangeLives(lives)
+	$StatusBar.SetStage(Score.CurrentScore)
 	mode = scoreMode
 	if win:
 		$Status.Win()
