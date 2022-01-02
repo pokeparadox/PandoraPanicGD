@@ -386,6 +386,7 @@ hframes = 4
 frame = 3
 
 [node name="Shadow" type="Sprite" parent="CollisionShape2D"]
+self_modulate = Color( 1, 1, 1, 0.25098 )
 texture = ExtResource( 17 )
 
 [node name="Death" type="Node2D" parent="CollisionShape2D"]
