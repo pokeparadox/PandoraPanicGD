@@ -2,7 +2,7 @@ extends Node
 
 class_name CreditItem
 
-enum CreditType {Game, Music, Graphics, Sound, Thanks}
+enum CreditType {Game, Port, Music, Graphics, Sound, Thanks}
 
 var Active : bool = false setget , getActive
 export var Author : String = ""

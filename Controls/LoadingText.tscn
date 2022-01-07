@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Fonts/PandoraPanicFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Controls/LoadingText.gd" type="Script" id=2]
+
+[node name="LoadingText" type="Label"]
+margin_top = 223.0
+margin_right = 135.0
+margin_bottom = 256.0
+custom_fonts/font = ExtResource( 1 )
+text = "Loading"
+uppercase = true
+max_lines_visible = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

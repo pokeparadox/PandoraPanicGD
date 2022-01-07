@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Title/MainMenu/pp_logo_small.png" type="Texture" id=1]
+[ext_resource path="res://Title/Background/Background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Fonts/PandoraPanicFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Title/GetReady.gd" type="Script" id=4]
+[ext_resource path="res://Controls/LoadingText.tscn" type="PackedScene" id=5]
+
+[node name="GetReady" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Background" parent="." instance=ExtResource( 2 )]
+
+[node name="Header" type="Sprite" parent="."]
+position = Vector2( 400, 77 )
+texture = ExtResource( 1 )
+
+[node name="LoadingText" parent="." instance=ExtResource( 5 )]
+self_modulate = Color( 1, 1, 1, 0.231373 )
+margin_left = 1.0
+margin_top = 2.0
+margin_right = 136.0
+margin_bottom = 35.0
+rect_scale = Vector2( 0.7, 0.7 )
+
+[node name="GetReady" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 294.0
+margin_top = 238.0
+margin_right = 506.0
+margin_bottom = 271.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 7
+custom_fonts/font = ExtResource( 3 )
+text = "GET READY!!!"
+align = 1
+valign = 1
+uppercase = true
+max_lines_visible = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

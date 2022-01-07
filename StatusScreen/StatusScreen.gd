@@ -1,16 +1,8 @@
-extends Node2D
-
-var mode = Score.ScoreMode.Panic
-
-const STATUS_DISPLAY_TIME : int = 2
+extends "res://Title/GetReady.gd"
 
 func _ready() -> void:
-	$Background.ChangeColour = false
+	._ready()
 	$LifeBar.LivesCount = Score.Lives
-
-func SetupInit(scoreMode) -> void:
-	mode = scoreMode
-	LoadNext()
 
 func Setup(scoreMode, win : bool) -> void:
 	var lives = Score.Lives
@@ -22,13 +14,6 @@ func Setup(scoreMode, win : bool) -> void:
 		$Status.Win()
 	else:
 		$Status.Lose()
-
-
-func LoadNext() -> void:
-	if mode == Score.ScoreMode.Ordered:
-		SceneManager.LoadNextGameScene()
-	elif mode == Score.ScoreMode.Panic:
-		SceneManager.LoadRandomGameScene()
 
 func _on_Status_ResultSoundFinished() -> void:
 	LoadNext()

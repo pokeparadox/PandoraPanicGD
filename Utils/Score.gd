@@ -12,13 +12,17 @@ onready var HiScore : int = 0
 onready var CurrentPlayer : String = ""
 
 func Load(mode) -> void:
+	var getReady = preload("res://Title/GetReady.tscn").instance()
+	getReady.SetupInit(Mode)
+
 	Mode = mode
 	Lives = 4
 	CurrentScore = 0
-	if mode == Score.ScoreMode.Ordered:
-		SceneManager.LoadNextGameScene()
-	elif mode == ScoreMode.Panic:
-		SceneManager.LoadRandomGameScene()
+	SceneManager.SetScene(getReady)
+	#if mode == Score.ScoreMode.Ordered:
+	#	SceneManager.LoadNextGameScene()
+	#elif mode == ScoreMode.Panic:
+	#	SceneManager.LoadRandomGameScene()
 
 func Save(name : String = "") -> void:
 	# Save the hi score with the player's name
