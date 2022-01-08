@@ -47,6 +47,7 @@ Score="*res://Utils/Score.gd"
 
 window/size/width=800
 window/size/height=480
+window/vsync/vsync_via_compositor=true
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 width=800
@@ -99,6 +100,10 @@ right={
 2d_physics/layer_4="Bullet"
 2d_physics/layer_5="Target"
 
+[physics]
+
+2d/thread_model=2
+
 [render]
 
 thread_model=2
@@ -108,4 +113,9 @@ default_clear_color=Color( 0, 0, 0, 1 )
 [rendering]
 
 quality/driver/driver_name="GLES2"
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=0
+threads/thread_model=2
+quality/filters/anisotropic_filter_level=1
+quality/filters/use_nearest_mipmap_filter=true
 environment/default_environment="res://default_env.tres"
