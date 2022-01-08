@@ -8,6 +8,7 @@ func setupCredits() -> void:
 	addCredit(CreditItem.CreditType.Game, "Todd", "BadVista")
 	addCredit(CreditItem.CreditType.Music, "Gruso", "Windows (Badvista)")
 	addCredit(CreditItem.CreditType.Graphics, "Gruso", "badvista.org")
+	addCredit(CreditItem.CreditType.Port, "PokeParadox", "BadVista")
 
 func _on_WinArea_body_entered(body: Node) -> void:
 	# Check velocity is lowering and then set win condition
