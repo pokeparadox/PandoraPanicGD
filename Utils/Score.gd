@@ -35,6 +35,7 @@ func GameWin() -> void:
 
 func GameOver():
 	# TODO load gameover screen
+	SceneManager.SetScene(preload("res://Title/Title.tscn").instance())
 	pass
 
 func GameLose() -> void:
