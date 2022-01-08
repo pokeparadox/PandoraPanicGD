@@ -3,10 +3,6 @@ extends Node2D
 var LivesCount : int = 4
 export var Spacing : int = 5
 
-func _ready() -> void:
-	pass
-
-
 func ChangeLives(livesRemaining) -> void:
 	var tree = get_tree()
 	if tree:
@@ -15,15 +11,15 @@ func ChangeLives(livesRemaining) -> void:
 			for l in lives:
 				remove_child(l)
 			lives.clear()
-	# Grab the Life node
+
 	var life : Node2D = $Life
 	var spriteWidth = life.find_node("Normal").get_texture().get_width()
 
-	for i in range(0, LivesCount):
+	for i in range(1, LivesCount + 1):
 		var life_clone : Node2D = life.duplicate()
-		life_clone.position = Vector2(i * (spriteWidth + Spacing), 0)
+		life_clone.position = Vector2((i-1) * (spriteWidth + Spacing), 0)
 		add_to_group("Lives")
-		if i > livesRemaining:
+		if i >= livesRemaining + 1 and i <= LivesCount:
 			life_clone.Lose()
 		add_child(life_clone)
 	$Life.hide()
