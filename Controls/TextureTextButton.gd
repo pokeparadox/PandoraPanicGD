@@ -10,14 +10,14 @@ export var SelectedTextColour : Color = Color.white
 export var TextColour : Color = Color.yellow
 
 func setLabelText(text) -> void:
-	if $Label:
+	if has_node("Label"):
 		$Label.text = text
 
 func getLabelText() -> String:
 	return $Label.text
 
 func setLabelOffset(offset : Vector2) -> void:
-	if $Label:
+	if has_node("Label"):
 		$Label.set_position(offset)
 
 func getLabelOffset() -> Vector2:

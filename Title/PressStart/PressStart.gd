@@ -11,7 +11,7 @@ func setIsActive(active : bool) -> void:
 func getIsActive() -> bool:
 	return _isActive
 
-func _process(delta):
+func _physics_process(delta: float) -> void:
 	if _isActive:
 		cumulativeTime += delta * Global.FLASH_INTERVAL
 		if cumulativeTime > 1:

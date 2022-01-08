@@ -19,10 +19,6 @@ func Load(mode) -> void:
 	Lives = 4
 	CurrentScore = 0
 	SceneManager.SetScene(getReady)
-	#if mode == Score.ScoreMode.Ordered:
-	#	SceneManager.LoadNextGameScene()
-	#elif mode == ScoreMode.Panic:
-	#	SceneManager.LoadRandomGameScene()
 
 func Save(name : String = "") -> void:
 	# Save the hi score with the player's name
