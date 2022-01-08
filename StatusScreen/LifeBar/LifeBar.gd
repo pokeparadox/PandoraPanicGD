@@ -15,11 +15,12 @@ func ChangeLives(livesRemaining) -> void:
 	var life : Node2D = $Life
 	var spriteWidth = life.find_node("Normal").get_texture().get_width()
 
-	for i in range(1, LivesCount + 1):
+	var offset : int = 1
+	for i in range(offset, LivesCount + offset):
 		var life_clone : Node2D = life.duplicate()
-		life_clone.position = Vector2((i-1) * (spriteWidth + Spacing), 0)
+		life_clone.position = Vector2((i-offset) * (spriteWidth + Spacing), 0)
 		add_to_group("Lives")
-		if i >= livesRemaining + 1 and i <= LivesCount:
+		if i >= livesRemaining + offset and i <= LivesCount:
 			life_clone.Lose()
 		add_child(life_clone)
 	$Life.hide()
