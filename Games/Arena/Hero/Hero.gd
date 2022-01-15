@@ -13,8 +13,8 @@ const HEROSTATIC = "CollisionShape2D/Static/"
 const HEROANIM = "CollisionShape2D/Animated/"
 const ATTACKANIM = "CollisionShape2D/Attack/"
 var isAttacking = false
-var direction = FACE_UP
-var lastDirection = direction
+var heading = FACE_UP
+var lastHeading = heading
 var lastPos
 var isDead = false
 var IsDying = false
@@ -25,10 +25,10 @@ func _process(delta):
 	if isDead:
 		return false
 
-	if direction != UNKNOWN:
-		lastDirection = direction
+	if heading != UNKNOWN:
+		lastHeading = heading
 	lastPos = global_position
-	direction = UNKNOWN
+	heading = UNKNOWN
 
 	var xDir = UNKNOWN
 	var yDir = UNKNOWN
@@ -47,29 +47,29 @@ func _process(delta):
 	if xDir != UNKNOWN && yDir != UNKNOWN:
 		if yDir == FACE_UP:
 			if xDir == FACE_LEFT:
-				direction = FACE_UPLEFT
+				heading = FACE_UPLEFT
 			elif xDir == FACE_RIGHT:
-				direction = FACE_UPRIGHT
+				heading = FACE_UPRIGHT
 		elif yDir == FACE_DOWN:
 			if xDir == FACE_LEFT:
-				direction = FACE_DOWNLEFT
+				heading = FACE_DOWNLEFT
 			elif xDir == FACE_RIGHT:
-				direction = FACE_DOWNRIGHT
+				heading = FACE_DOWNRIGHT
 	else:
 		if xDir != UNKNOWN:
-			direction = xDir
+			heading = xDir
 		elif yDir != UNKNOWN:
-			direction = yDir
+			heading = yDir
 
 	if IsDying:
 		Die()
 	# If the direction matches we are holding and so should start walking
 	elif isAttacking:
-		Attack(direction)
-	elif direction == lastDirection:
-		Walking(direction, delta)
+		Attack(heading)
+	elif heading == lastHeading:
+		Walking(heading, delta)
 	else:
-		Standing(direction)
+		Standing(heading)
 
 func Die():
 	HideAllPoses()
@@ -96,78 +96,78 @@ func HideAllPoses():
 func EndAttack():
 	isAttacking = false
 
-func Attack(direction):
+func Attack(heading):
 	HideAllPoses()
-	if direction == UNKNOWN && lastDirection != UNKNOWN:
-		direction = lastDirection
+	if heading == UNKNOWN && lastHeading != UNKNOWN:
+		heading = lastHeading
 
 	var player = get_node("AnimationPlayer")
 	var currentAnim = player.get_current_animation()
 
-	if direction == FACE_UP || direction == FACE_UPLEFT || direction == FACE_UPRIGHT:
+	if heading == FACE_UP || heading == FACE_UPLEFT || heading == FACE_UPRIGHT:
 		if !player.is_playing() && currentAnim == "SwordUp" || currentAnim != "SwordUp":
 			player.play("SwordUp")
 		get_node(ATTACKANIM + "SwordUp").show()
-	elif direction == FACE_DOWN || direction == FACE_DOWNLEFT || direction== FACE_DOWNRIGHT:
+	elif heading == FACE_DOWN || heading == FACE_DOWNLEFT || heading== FACE_DOWNRIGHT:
 		if !player.is_playing() && currentAnim == "SwordDown" || currentAnim != "SwordDown":
 			player.play("SwordDown")
 		get_node(ATTACKANIM + "SwordDown").show()
-	elif direction == FACE_LEFT:
+	elif heading == FACE_LEFT:
 		if !player.is_playing() && currentAnim == "SwordLeft" || currentAnim != "SwordLeft":
 			player.play("SwordLeft")
 		get_node(ATTACKANIM + "SwordLeft").show()
-	elif direction == FACE_RIGHT:
+	elif heading == FACE_RIGHT:
 		if !player.is_playing() && currentAnim == "SwordRight" || currentAnim != "SwordRight":
 			player.play("SwordRight")
 		get_node(ATTACKANIM + "SwordRight").show()
 
-func Walking(direction, dt):
+func Walking(heading, dt):
 	HideAllPoses()
 	var delta = Vector2(0,0)
 
 	var player = get_node("AnimationPlayer")
 	var currentAnim = player.get_current_animation()
 
-	if direction == FACE_UP:
+	if heading == FACE_UP:
 		delta.y = -ACCELERATION
 		if !player.is_playing() && currentAnim == "WalkUp" || currentAnim != "WalkUp":
 			player.play("WalkUp")
 		get_node(HEROANIM + "WalkingUp").show()
-	elif direction == FACE_UPLEFT:
+	elif heading == FACE_UPLEFT:
 		delta.y = -ACCELERATION
 		delta.x = -ACCELERATION
 		if !player.is_playing() && currentAnim == "WalkUp" || currentAnim != "WalkUp":
 			player.play("WalkUp")
 		get_node(HEROANIM + "WalkingUp").show()
-	elif direction == FACE_UPRIGHT:
+	elif heading == FACE_UPRIGHT:
 		delta.y = -ACCELERATION
 		delta.x = ACCELERATION
 		if !player.is_playing() && currentAnim == "WalkUp" || currentAnim != "WalkUp":
 			player.play("WalkUp")
 		get_node(HEROANIM + "WalkingUp").show()
-	elif direction == FACE_DOWN:
+	elif heading == FACE_DOWN:
 		delta.y = ACCELERATION
 		if !player.is_playing() && currentAnim == "WalkDown" || currentAnim != "WalkDown":
 			player.play("WalkDown")
 		get_node(HEROANIM + "WalkingDown").show()
-	elif direction == FACE_DOWNLEFT:
+	elif heading == FACE_DOWNLEFT:
 		delta.y = ACCELERATION
 		delta.x = -ACCELERATION
 		if !player.is_playing() && currentAnim == "WalkDown" || currentAnim != "WalkDown":
 			player.play("WalkDown")
 		get_node(HEROANIM + "WalkingDown").show()
-	elif direction == FACE_DOWNRIGHT:
+	elif heading == FACE_DOWNRIGHT:
 		delta.y = ACCELERATION
 		delta.x = ACCELERATION
 		if !player.is_playing() && currentAnim == "WalkDown" || currentAnim != "WalkDown":
 			player.play("WalkDown")
 		get_node(HEROANIM + "WalkingDown").show()
-	elif direction == FACE_LEFT:
+	elif heading == FACE_LEFT:
 		delta.x = -ACCELERATION
 		if !player.is_playing() && currentAnim == "WalkLeft" || currentAnim != "WalkLeft":
 			player.play("WalkLeft")
 		get_node(HEROANIM + "WalkingLeft").show()
-	elif direction == FACE_RIGHT:
+	elif heading == FACE_RIGHT:
 		delta.x = ACCELERATION
 		if !player.is_playing() && currentAnim == "WalkRight" || currentAnim != "WalkRight":
 			player.play("WalkRight")
@@ -177,7 +177,7 @@ func Walking(direction, dt):
 	pos = pos + delta
 
 	if pos == pos + delta:
-		Standing(direction)
+		Standing(heading)
 
 	var collision = move_and_collide(delta * dt * 10)
 	if collision and collision.collider:
@@ -189,17 +189,17 @@ func Walking(direction, dt):
 	else:
 		get_node(HEROSTATIC + "Hit").hide()
 
-func Standing(direction):
+func Standing(heading):
 	HideAllPoses()
 
-	if direction == UNKNOWN && lastDirection != UNKNOWN:
-		direction = lastDirection
+	if heading == UNKNOWN && lastHeading != UNKNOWN:
+		heading = lastHeading
 
-	if direction == FACE_UP || direction == FACE_UPLEFT || direction == FACE_UPRIGHT:
+	if heading == FACE_UP || heading == FACE_UPLEFT || heading == FACE_UPRIGHT:
 		get_node(HEROSTATIC + "StandingUp").show()
-	elif direction == FACE_DOWN || direction == FACE_DOWNLEFT || direction == FACE_DOWNRIGHT:
+	elif heading == FACE_DOWN || heading == FACE_DOWNLEFT || heading == FACE_DOWNRIGHT:
 		get_node(HEROSTATIC + "StandingDown").show()
-	elif direction == FACE_LEFT:
+	elif heading == FACE_LEFT:
 		get_node(HEROSTATIC + "StandingLeft").show()
-	elif direction == FACE_RIGHT:
+	elif heading == FACE_RIGHT:
 		get_node(HEROSTATIC + "StandingRight").show()
