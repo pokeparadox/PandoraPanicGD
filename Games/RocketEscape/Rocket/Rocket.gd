@@ -16,6 +16,9 @@ var firstTouch = true
 var fuel = 100
 
 func _physics_process(delta):
+	var width = $Sprite.texture.get_width()
+	position.x = wrapf(position.x, -width, Resolution.GetWidth() + width)
+
 	if Input.is_action_pressed("ui_up") || Input.is_action_pressed("ui_accept"):
 		ActivateThrusters()
 	else:
